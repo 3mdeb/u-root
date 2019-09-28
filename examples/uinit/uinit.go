@@ -14,10 +14,9 @@ import (
 
 var (
 	commands = []string{
-		"/bbin/date",
-		"/bbin/dhclient -ipv6=false",
-		"/bbin/ip a",
-		"/bbin/elvish",
+		"/bbin/mount -t ext4 /dev/sda1 /var",
+		"/bbin/kexec -l -c \"dom0_mem=512M loglvl=all guest_loglvl=all com1=115200,8n1 console=com1 no-real-mode\" --module \"/var/bzImage console=hvc0 earlyprintk=xen nomodeset root=/dev/sda2\" /var/xen.gz",
+		"/bbin/kexec -e",
 		"/bbin/shutdown halt",
 	}
 )
